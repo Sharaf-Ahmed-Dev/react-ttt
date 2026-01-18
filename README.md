@@ -1,16 +1,63 @@
-# React + Vite
+# Tic Tac Toe React App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **Tic Tac Toe** game built using **React** and **Vite**.  
+Two players can play alternately using X and O, with automatic win and draw detection, and a reset button to start a new game.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- Two-player gameplay (X and O)  
+- Detects all winning combinations: 3 rows, 3 columns, 2 diagonals  
+- Detects a draw when all squares are filled  
+- Dynamic heading shows current status, winner, or draw message  
+- New Game button resets the board  
+- Uses images for X and O symbols  
+- Prevents moves after a win or draw  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## How It Works
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- The game board is represented by an array of 9 elements (`data = ["", "", "", "", "", "", "", "", ""]`).  
+- **React hooks** used:  
+  - `useState` for counting turns and locking the board  
+  - `useRef` for accessing heading and box elements directly  
+- **Toggle function** handles player moves:  
+  - Adds X or O image to clicked box  
+  - Updates the `data` array  
+  - Increments move count  
+  - Calls `checkWin` to see if the game has been won or drawn  
+- **checkWin function** checks all possible win combinations and calls `won(winner)` if a player wins.  
+- **won function** updates the heading with the winner and locks the board.  
+- **draw function** updates the heading if all squares are filled without a winner.  
+- **reset function** clears the board, resets the state, and unlocks the game for a new round.  
+
+---
+
+
+## Gameplay Instructions
+
+1. Player X starts first.  
+2. Click on an empty square to place X or O.  
+3. Players alternate turns.  
+4. When a player gets 3 symbols in a row (horizontally, vertically, or diagonally), they win.  
+5. If all squares are filled without a winner, the game ends in a draw.  
+6. Click the **New Game** button to restart.
+
+---
+
+## Technologies Used
+
+- **React 18** – for building the UI and game logic  
+- **JavaScript (ES6+)** – for handling game state and win/draw logic  
+- **CSS3** – for styling the board, boxes, heading, and button  
+- **Vite** – development build tool for fast setup  
+
+---
+
+## Live Demo
+
+Try the game online here:  
+[Play Tic Tac Toe](https://Sharaf-Ahmed-Dev.github.io/react-ttt/)
+
